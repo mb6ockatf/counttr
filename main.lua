@@ -4,10 +4,10 @@ local HELP = [[
 counttr - mathematics trainer
 
 USAGE: lua main.lua [ --repeat] [number]
-                    [ --from] number
-                    [ --to] number
-                    [ --action] squares (only squares yet)
-                    [ --help] outputs this message
+	                [ --from] number
+	                [ --to] number
+	                [ --action] squares (only squares yet)
+	                [ --help] outputs this message
 ]]
 local args, entropy, repetitions = {...}, 0, 1
 local from, to, temp, action
@@ -47,27 +47,11 @@ local function echo_error(text, exit_code)
 	os.exit(exit_code)
 end
 
-local function random(x, y)
-	entropy = entropy + 1
-	if x ~= nil and y == nil then
-		y = x
-		x = 1
-	end
-	if x ~= nil and y ~= nil then
-		local seed = math.randomseed(os.time() + entropy)  ---@type integer
-		local random_number = math.random(seed) * 999999 % y  ---@type float
-		return math.floor(x + random_number)
-	else
-		local seed = math.randomseed(os.time() + entropy)
-		return math.floor(math.random(seed) * 100)
-	end
-end
-
 local function train_squares(range_start, range_finish, repetitions)
-	local corrent = 0
+	local correct = 0
 	for iter = 1, repetitions, 1 do
 		::continue::
-		local argument = random(range_start, range_finish)
+		local argument = math.random(range_start, range_finish)
 		io.write(argument .. " ^ 2 = ")
 		local answer = io.read("*line"):lower()
 		if answer == "!" then
@@ -89,6 +73,7 @@ local function train_squares(range_start, range_finish, repetitions)
 	return correct, repetitions
 end
 
+math.randomseed(os.time() + tonumber(tostring({}):sub(8)))
 if get_terminal_colors_number() >= 16 then
 	SUPPORT_COLORS = true
 end
@@ -128,11 +113,23 @@ for index, value in ipairs(args) do
 		io.write(help)
 	end
 end
-if from ~= nil and to ~= nil then
+if repetitions < 1 then
+	echo_error("'repetitions' is smaller than 1", 128)
+elseif from ~= nil and to ~= nil then
 	if to <= from then
 		echo_error("'to' is smaller or equal to 'from'", 128)
 	end
 end
+if from == nil and to == nil then
+	from, to = 0, 0
+	while not (to - from < 100) do
+		from, to = math.random(), math.random()
+	end
+elseif from == nil and to ~= nil then
+	from = to - 100
+elseif from ~= nil and to == nil then
+	to = from + 100
+end
 if action == "squares" then
-	train_squares(from, to, repetitions)		
+	train_squares(from, to, repetitions)
 end
