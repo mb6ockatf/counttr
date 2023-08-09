@@ -12,10 +12,7 @@ source=("main.lua" "LICENSE")
 cksums=("3911755826" "1403875556")
 
 prepare(){
-	cp main.lua counttr.lua
-	mv counttr.lua counttr
-	luarocks install mfr --local
-	luarocks install argparse --local
+	make install
 }
 
 package() {
