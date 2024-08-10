@@ -1,0 +1,49 @@
+commit 011de9f0b0844e937798af38ade5107e5d63477b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Aug 10 15:58:06 2024 +0300
+
+    chore(CONTRIBUTING): added
+
+commit 047f8d267c50d24a43a655663d33cf61937cdb18
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 9 21:26:41 2024 +0300
+
+    chore(COPYING): AGPL
+
+commit b4ee5f2f6efd04469a14dc2022194bdff27d4a30
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Aug 9 20:10:20 2023 +0000
+
+    chore: correct install system
+
+commit 4ace802061852509cea8e0ceb98c662e8777d5e3
+Author: mb6ockatf <mdddmmmm@ya.ru>
+Date:   Sat Jul 29 00:54:16 2023 +0300
+
+    chore: packaging files & readme
+
+commit 929767b5a5d846922a6d13e20a655c6c632d1b92
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Jul 28 22:19:29 2023 +0300
+
+    chore: add agpl
+
+commit 8924fa67e41c440f81dbe9875cabbc4a53a18c24
+Author: mb6ockatf <mdddmmmm@ya.ru>
+Date:   Fri Jul 28 22:06:52 2023 +0300
+
+    feat(finished!)
+
+commit b88d1317062de0b7c0fdafd407ba535178a83938
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Tue Jul 4 13:57:17 2023 +0300
+
+    fix(main.lua): random limits fixed, +1
+    
+    added: additional argument checks
+
+commit 576db1e73a078aa44e070b29e804fac77c9d55fb
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Jul 2 22:21:19 2023 +0300
+
+    initial commit
