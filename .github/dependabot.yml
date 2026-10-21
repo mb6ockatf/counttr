@@ -1,0 +1,20 @@
+# dependabot.yml - keep the actions used by the workflows up to date.
+#
+# Copyright (C) 2026 mb6ockatf
+# This file is free software; see COPYING for copying conditions.
+#
+# GitHub retires old action runtimes, so stale major versions stop
+# working.  All updates arrive grouped in one weekly pull request.
+
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ['*']
+    commit-message:
+      prefix: ci

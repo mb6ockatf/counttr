@@ -1,0 +1,54 @@
+# ci.yml - lint counttr and install its rockspec on every push and PR.
+#
+# Copyright (C) 2026 mb6ockatf
+# This file is free software; see COPYING for copying conditions.
+#
+# Lua 5.4 is the version the PKGBUILD depends on.  luacheck reads its
+# options from .luacheckrc; only tracked files are checked, so the Lua
+# and LuaRocks trees the setup actions build in the workspace are not.
+
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  luacheck:
+    name: luacheck
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: leafo/gh-actions-lua@v13
+        with:
+          luaVersion: '5.4'
+      - uses: leafo/gh-actions-luarocks@v6
+      - name: Install luacheck
+        run: luarocks install luacheck
+      - name: Check the Lua sources
+        run: |
+          luacheck --version
+          git ls-files -z '*.lua' | xargs -0 luacheck
+
+  rockspec:
+    name: luarocks make
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: leafo/gh-actions-lua@v13
+        with:
+          luaVersion: '5.4'
+      - uses: leafo/gh-actions-luarocks@v6
+      - name: Build and install the rock
+        run: luarocks make counttr-1.0-1.rockspec
+      - name: Show the installed rock
+        run: luarocks show counttr

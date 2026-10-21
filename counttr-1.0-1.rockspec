@@ -1,4 +1,4 @@
-package = "mfr"
+package = "counttr"
 version = "1.0-1"
 source = {
    url = "git+https://github.com/mb6ockatf/counttr.git"
