@@ -1,0 +1,74 @@
+counttr -- a mental arithmetic trainer
+======================================
+
+counttr is a mathematics count trainer for the terminal, written in
+Lua.  It asks you questions in the chosen mode (squares, addition,
+multiplication, subtraction, floor division, roots, powers or modulo)
+and checks your answers.
+
+Screenshot: example.jpeg
+
+Requirements
+------------
+
+Lua 5.4 or later and LuaRocks 3.9.2 or later, because the mfr and
+argparse rocks are required.  All of these are installed automatically
+if you use the Arch Linux package (see below).
+
+Building and installing
+-----------------------
+
+On Arch Linux, clone this repository and build and install the package
+from the project's directory:
+
+    makepkg -sri
+
+Elsewhere, "make all" installs the two rocks into your home directory
+with "luarocks install --local" and copies main.lua to counttr.
+
+Using it
+--------
+
+Once installed, run it as
+
+    counttr OPTIONS MODE
+
+and otherwise as
+
+    lua main.lua OPTIONS MODE
+
+Help is available with the --help option:
+
+    Arguments:
+       {squares,add,multiply,substract,floor_division,root,power,modulo}
+                             training mode
+    Options:
+       -h, --help            Show this help message and exit.
+       --completion {bash,zsh,fish}
+                             Output a shell completion script for the
+                             specified shell.
+       --repeat <repeat>     number of repetitions
+       --from <from>         smaller range border
+       --to <to>             larger range border
+       --power <power>       power for power action or root
+       -n, --no-colors       disable use of colorful output with ascii
+                             control sequences
+       -c, --colors          (forced) use of colorful output with ascii
+                             control sequences. by default, colors are
+                             enabled if NO_COLORS environment variable
+                             is not set and terminal emulator supports
+                             colors.
+
+Reporting bugs
+--------------
+
+counttr is open for ideas, bug reports and contributions:
+https://github.com/mb6ockatf/counttr/issues.
+
+Copying
+-------
+
+Copyright (C) 2023 mb6ockatf
+
+counttr is released under the GNU Affero General Public License,
+version 3; see COPYING.
